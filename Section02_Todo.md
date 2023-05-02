@@ -95,18 +95,19 @@ index.html 뿐인 SPA 에서는 HTML5의 <b>`History API`</b> 를 통해 페이�
 `History.replaceState()` : 최근 세션 기록 스택의 내용을 주어진 데이터로 교체한다. 
 <br><br>
 
-# 2-4. 할 일 목록 애플리케이션 살펴보기 
-### JSX(Javascript syntax extension)
+# 2-4. JSX(Javascript syntax extension)
 JSX는 자바스크립트의 확장 문법이다. 리액트에서는 이 JSX를 이용하여 화면에서 UI가 보이는 모습을 나타내준다. 
 
-𖤐 JSX를 이용하면 UI를 나타낼 때 자바스크립트(logic)과 HTML구조(markup)를 같이 사용할 수 있기 때문에 기본 UI에 데이터가 변하는 것들이나 이벤트들이 처리되는 부분을 더욱 쉽게 구현할 수 있다. 
+JSX를 이용하면 UI를 나타낼 때 자바스크립트(logic)과 HTML구조(markup)를 같이 사용할 수 있기 때문에 기본 UI에 데이터가 변하는 것들이나 이벤트들이 처리되는 부분을 더욱 쉽게 구현할 수 있다. 
 
 <b> 원래 리액트에서 화면을 그리는 방식 </b>
 React.createElement API 를 사용해서 앨리먼트를 생성한 후 (객체가 됨) 이 앨리먼트를 In-Memory에 저장한다.   
 그리고 ReactDOM.render 함수를 사용해서 실제 웹 브라우저에 그려준다. 
 
 ```js
+// vanila js
 // React.createElement
+// h1 돔을 하나 만들것이다. 그 안에 attr 는 아무것도 안넣고, 내용은 'I do not use JSX'
 const myelement = React.createElement('h1', {}, 'I do not use JSX');
 
 // ReactDOM.render
@@ -116,3 +117,6 @@ ReactDOM.render(myelement, document.getElementById('root'));
 <b> JSX는 createElement를 쉽게 사용하기 위해 사용한다. </b>   
 &rarr; 모든 UI를 만들때 마다 createElement를 사용해서 컴포넌트를 만들 수는 없다. 때문에 JSX를 사용한 후 그것을 babel이 다시 createElement로 바꿔서 사용한다. 
 
+### 𖤐 JSX 코드 작성 시 주의사항 
+1. Root Element는 단 하나여야 한다.     
+  즉, 추가 태그를 사용해서라도 root를 하나로 만들어야 한다.    
