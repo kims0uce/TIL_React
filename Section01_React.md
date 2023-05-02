@@ -21,7 +21,6 @@ Angular(TypeScript)와 Vue는 프레임워크이며 React는 라이브러리이�
 5. Spread operator(cf, Rest Operator `...`의 위치가 뒤쪽)     
 6. Destructing     
 7. Template literals (using backtic, `${변수}` 이런식으로 사용할 수 있음)    
-
 <br><br>
 
 # 1-2. 리액트 컴포넌트 
@@ -37,12 +36,13 @@ Angular(TypeScript)와 Vue는 프레임워크이며 React는 라이브러리이�
 |---|---|
 |class App extends Component{ render() { return <b>안녕하세요.</b>}; } | function App() { return <b>안녕하세요.</b>}|   
 
-&rarr; 원래 리액트로 개발할 때는 클래스 컴포넌트를 이용해서 많이 개발을 했지만, 리액트에서 리액트 Hooks라는 것을 발표한 이후부터는 함수형 컴포넌트를 이용해서 개발을 많이 한다. 
+&rarr; 원래 리액트로 개발할 때는 클래스 컴포넌트를 이용해서 많이 개발을 했지만, 리액트에서 리액트 Hooks라는 것을 발표한 이후부터는 함수형 컴포넌트를 이용해서 개발을 많이 한다(가독성과 관리 측면).    
 
 ### 𖤐 React의 Component 구조 
 1. 리액트의 최상위 컴포넌트는 "App" 이다.    
 2. 컴포넌트 이름은 보통 PascalCase를 사용하기를 권장된다.(첫글자는 항상 대문자, 소문자로만 되어있는 html 태그와 구분하기 위해)       
 3. 컴포넌트는 App을 root로 하여 트리 구조로 구성할 수 있다.    
+4. 보통 하나의 컴포넌트 당 하나의 js(JSX) 파일로 매핑하여 만든다.    
 <br><br>
 
 # 1-3. 브라우저가 그려지는 원리 및 가상돔 
@@ -101,6 +101,12 @@ HTML &rarr; DOM tree 생성 &rarr; Render tree 생성 &rarr; Layout(reflow) &rar
 npx는 노드 패키지 실행을 도와주는 도구이다.    
 따라서 create-react-app 이란 npm 레지스트리(굉장히 많은 라이브러리들이 저장되어있음, 이것을 가져와 개발에 활용)에 있는 패키지를 <폴더>에서 실행하여 리액트를 설치해준다. 
 
+ ```cmd
+ > npx create-react-app <폴더이름>
+ > cd <폴더이름>
+ > npm start 
+ ```
+
 ### (2) 원래 리액트 앱 설치하는 방법
 webpack 이나 Babel 같은 모듈을 설치하고 설정해야 리액트 앱을 시작할 수 있었다.  
 
@@ -114,6 +120,6 @@ webpack 이나 Babel 같은 모듈을 설치하고 설정해야 리액트 앱을
 
 <b> Babel 이란 ? </b>
 
-최신 자바스크립트 문법을 지원하지 않는 브라우저들을 위해 최신 자바스크립트 문법을 구형 브라우저에서도 실행시킬 수 있게 변환시켜주는 라이브러리이다.    
+최신 자바스크립트 문법을 지원하지 않는 브라우저들을 위해 최신 자바스크립트 문법을 구형 브라우저에서도 실행시킬 수 있게 변환시켜주는 라이브러리이다.      
 ex) arrow function 
 
