@@ -1,16 +1,27 @@
 # 1-1. 리액트는 프레임워크가 아닌 라이브러리
 리액트는 인터렉션이 많은 웹앱을 개발하기 위해 주로 사용된다.
 
-Angular와 Vue는 프레임워크이며 리액트는 라이브러리이다.      
+Angular(TypeScript)와 Vue는 프레임워크이며 React는 라이브러리이다.      
 |Framework|Library|
 |---|---|
-|어떤한 앱을 만들기 위해 필요한 대부분의 것(라이브러리)을 가지고 있음|어떠한 특정 기능을 모듈화 해 놓은 것| 
+|어떤한 앱을 만들기 위해 필요한 대부분의 것(라이브러리)을 가지고 있음|어떠한 특정 기능을 모듈화 해 놓은 것 (lean & focused)| 
 
 리액트는 전적으로 <b>`UI를 랜더링(화면을 구현)`</b> 하는데 관여한다.   
 &rarr; 화면을 바꾸는 라우팅은 react-router-dom 모듈   
 &rarr; 상태를 관리하기 위해서는 redux, mobx, recoil 모듈   
 &rarr; 빌드를 위해서는 webpack, npm   
-&rarr; 테스팅을 위해서는 Eslint, Mocha, Jest   
+&rarr; 테스팅을 위해서는 Eslint, Mocha, Jest     
+이런식으로 필요에 따라 모듈을 다운로드 받아 쓰기 때문에 자유도가 높다.  
+
+### JavaScript의 추가 기능 (React에 앞서... ES6+)
+1. let & const (var를 대신하여)   
+2. Arrow function (단, this 사용 시 scope 주의)     
+3. import & export    
+4. Classes : constructor 축약    
+5. Spread operator(cf, Rest Operator `...`의 위치가 뒤쪽)     
+6. Destructing     
+7. Template literals (using backtic, `${변수}` 이런식으로 사용할 수 있음)    
+
 <br><br>
 
 # 1-2. 리액트 컴포넌트 
