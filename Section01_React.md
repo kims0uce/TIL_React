@@ -13,7 +13,7 @@ Angular(TypeScript)와 Vue는 프레임워크이며 React는 라이브러리이�
 &rarr; 테스팅을 위해서는 Eslint, Mocha, Jest     
 이런식으로 필요에 따라 모듈을 다운로드 받아 쓰기 때문에 자유도가 높다.  
 
-### JavaScript의 추가 기능 (React에 앞서... ES6+)
+### 𖤐 JavaScript의 추가 기능 (React에 앞서... ES6+)
 1. let & const (var를 대신하여)   
 2. Arrow function (단, this 사용 시 scope 주의)     
 3. import & export    
@@ -27,14 +27,22 @@ Angular(TypeScript)와 Vue는 프레임워크이며 React는 라이브러리이�
 # 1-2. 리액트 컴포넌트 
 리액트는 여러 컴포넌트를 이용하여 웹 앱을 개발한다.   
 
-`컴포넌트`란, 리액트로 만들어진 앱을 이루는 최소한의 단위 이다.   
-컴포넌트가 여러 개로 나누어져있기 때문에 하나의 컴포넌트를 여러 곳에서 사용할 수 있다.   
-또한 여러 명이 각자 맡은 컴포넌트를 동시에 수정할 수 도 있다.    
+`컴포넌트`란, 리액트로 만들어진 앱을 이루는 최소한의 단위 이다.     
+'Split big chunks if code into multiple smaller functions'     
+1. 재사용성(Reusability) : 같은 코드를 복붙하지 않기 위함이다.       
+2. 기능을 단위별로 분리 : 하닁 코드에 너무 많은 것을 털어 넣지 않기 위함이다.    
+&rarr; 여러 명이 각자 맡은 컴포넌트를 동시에 수정할 수 있다.      
+
 |Class components|Function components|
 |---|---|
 |class App extends Component{ render() { return <b>안녕하세요.</b>}; } | function App() { return <b>안녕하세요.</b>}|   
 
-&rarr; 원래 리액트로 개발할 때는 클래스 컴포넌트를 이용해서 많이 개발을 했지만, 리액트에서 리액트 Hooks라는 것을 발표한 이후부터는 함수형 컴포넌트를 이용해서 개발을 많이 한다.    
+&rarr; 원래 리액트로 개발할 때는 클래스 컴포넌트를 이용해서 많이 개발을 했지만, 리액트에서 리액트 Hooks라는 것을 발표한 이후부터는 함수형 컴포넌트를 이용해서 개발을 많이 한다. 
+
+### 𖤐 React의 Component 구조 
+1. 리액트의 최상위 컴포넌트는 "App" 이다.    
+2. 컴포넌트 이름은 보통 PascalCase를 사용하기를 권장된다.(첫글자는 항상 대문자, 소문자로만 되어있는 html 태그와 구분하기 위해)       
+3. 컴포넌트는 App을 root로 하여 트리 구조로 구성할 수 있다.    
 <br><br>
 
 # 1-3. 브라우저가 그려지는 원리 및 가상돔 
