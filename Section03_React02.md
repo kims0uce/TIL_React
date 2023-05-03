@@ -1,7 +1,7 @@
 # React Hooks란 무엇인가 ? 
 class 없이 state를 사용할 수 있는 새로운 기능이다. 
 
-### 𖤐 React Hooks이 필요한 이유
+### 𖤐 React Hooks가 필요한 이유
 주로 class Component로 사용되어온 리액트에서 느껴왔던 불편함이나 문제점들을 해결하기 위해서 개발되었다.   
 
 원래 React는 class Component를 사용하여 React Hooks는 functional Component를 사용한다.    

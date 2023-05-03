@@ -57,8 +57,8 @@ Angular(TypeScript)와 Vue는 프레임워크이며 React는 라이브러리이�
 
 HTML &rarr; DOM tree 생성 &rarr; Render tree 생성 &rarr; Layout(reflow) &rarr; Paint  
 
-1. `DOM tree 생성` : 랜더 엔진이 문서를 읽어들여서 그것들을 파싱하고, 어떤 내용을 페이지에 랜더링할지 결정한다.    
-2. `Render tree 생성` : 이 단계는 브라우저가 DOM과 CSSOM을 결합하는 곳이며, 이 프로세스는 화면에 보이는 모든 콘텐츠와 스타일 정보를 모두 포함하는 최종 랜더링 트리를 출력한다. 즉, 화면에 표시되는 모든 노드의 콘텐츠 및 스타일 정보를 포함한다.   
+1. `DOM tree 생성` : 랜더 엔진이 문서를 읽어들여서 그것들을 파싱하고, 어떤 내용을 페이지에 랜더링할지 결정한다.       
+2. `Render tree 생성` : 이 단계는 브라우저가 DOM과 CSSOM을 결합하는 곳이며, 이 프로세스는 화면에 보이는 모든 콘텐츠와 스타일 정보를 모두 포함하는 최종 랜더링 트리를 출력한다. 즉, <U>화면에 표시되는</U> 모든 노드의 콘텐츠 및 스타일 정보를 포함한다.   
 3. `Layout(reflow)` : 브라우저가 페이지에 표시되는 각 요소의 크기와 위치를 계산하는 단계이다.    
 4. `Paint` : 실제 화면에 그리는 단계이다.    
 
@@ -69,7 +69,7 @@ HTML &rarr; DOM tree 생성 &rarr; Render tree 생성 &rarr; Layout(reflow) &rar
 
 &rarr; 똑같은 과정을 중복으로 거치게 되니, 불필요하게 DOM을 조작하는 비용이 너무 크게 된다.  
 
-&rarr; <b>`가상돔(Virtual DOM)`</b>의 출현   
+&rarr; <b> 𖤐 `가상돔(Virtual DOM)`</b>의 출현   
 
 - 가상돔이란, 실제 DOM을 메모리에 복사해둔 것이다.     
 
