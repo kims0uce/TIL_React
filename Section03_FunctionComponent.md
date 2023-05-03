@@ -11,6 +11,7 @@ class 없이 state를 사용할 수 있는 새로운 기능이다.
 |더 긴 코드 양|짧은 코드 양|
 |더 복잡한 코드|더 심플한 코드|
 |더딘 성능|더 빠른 성능|   
+<br>
 
 ```js
 // Class Component
@@ -97,3 +98,104 @@ export default function Hello() {
 }
 ```
 
+&rarr; Class Component 에서는 생명주기를 이용할 때 componentDidMount / componentDidUpdate / componentWillUnmount 이렇게 다르게 처리를 해주지만,     
+React Hooks를 사용할 때는 **`useEffect`** 안에서 생명주기를 다 처리를 해줄 수 있기 때문에 코드가 간결해진다. 
+
+
+```js 
+componentDidMount() {
+    this.updateLists(this.props.id)
+}
+componentDidUpdate() {
+    if (prevProps.id !== this.props.id) {
+        this.updateLists(this.props.id)
+    }
+}
+
+updateLists = (id) => {
+    fetchLists(id)
+        .then((lists) => this.setState({
+            lists
+        }))
+}
+```
+
+```js
+useEffect(() => {
+    // fetchLists 메서드를 통해 리스트를 가져온다.
+    fetchLists(id)
+        // id가 바뀌었을 때 아래 부분을 한번 더 실행해준다. 
+        .then((repos) => {
+            setRepos(repos)
+        })
+}, [id])
+```
+
+&rarr; HOC 컴포넌트를 Custom React Hooks로 대체하여 너무나 많은 wrapper 컴포넌트를 줄일 수 있다.      
+- `HOC(Higher Order Component) 란 ? `
+화면에서 재사용 가능한 로직만을 분리하여 component로 만들고, 재사용 불가능한 UI와 같은 다른 부분들은 parameter로 받아서 처리하는 방법이다.    
+즉, 컴포넌트를 인자로 받아서 새로운 리액트 컴포넌트를 리턴하는 함수이다. 
+
+
+```js 
+function usersHOC(component) {
+    return class usersHOC extends React.Component {
+        state = {
+            users: []
+        }
+
+        componentDidMount() {
+            fetchUsers()
+                .then(users => {
+                    this.setstate({users})
+                })
+        }
+    
+    function Apage ({users}) {
+        // code here
+    }
+    export default usersHOC(Apage)
+
+    function Bpage ({users}) {
+        // code here
+    }
+    export default usersHOC(Bpage)
+    }
+}
+```
+
+```js 
+// useAuth : custom Hooks
+// 원하는대로 리액트 훅을 만들 수 있다.
+function useAuth() {
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        // fetchUsers로 유저 정보를 가지고 온 다음 
+        fetchUsers().then(users => {
+            setUsers(users);
+        });
+    }, []);
+
+    // return 으로 유저 정보를 내보내준다. 
+    return [users];
+}
+
+function Apage() {
+    // useAuth 라는 메서드로 유저 정보를 가져와서 
+    // users 라는 객체에 담아 바로 사용할 수 있다. 
+    const [users] = useAuth();
+
+    return (
+        <div>
+            A 페이지 
+            {users.map(({ name, url }) => (
+                <div key={name}>
+                    <p>{name}, {url}</p >
+                </div>
+            ))}
+
+        </div>
+    )
+}
+```
