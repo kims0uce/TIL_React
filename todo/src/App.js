@@ -128,7 +128,6 @@ export default function App () {
               <button style={btnStyle} onClick={() => handleClick(data.id)}>X</button>
             </div>
           ))} */}
-[]
           <Form handleSubmit={handleSubmit} value={value} setValue={setValue}/>
           {/* <form style={{display: 'flex'}} onSubmit={handleSubmit}> 
             <input 
