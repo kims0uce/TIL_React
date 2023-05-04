@@ -8,11 +8,31 @@
 </head>
 <body>
     <script>
-const arr1 = [1, 2, 3];
-const arr2 = [...arr1].reverse();
+var people = [
+    {
+        name: "Mike Smith",
+        family: {
+            mother: "Jane Smith",
+            father: "Harry Smith",
+            sister: "Anne Smith"
+        },
+        age: 35
+    },
+    {
+        name: "Tom Riddle",
+        family: {
+            mother: "Norah Riddle",
+            father: "Richard Riddle",
+            brother: "Howard Riddle"
+        },
+        age: 24
+    }
+];
 
-console.log(arr1);
-console.log(arr2);
+for (var {name: n, family: {father: f}} of people) {
+    console.log(`Name: ${n}, Father: ${f}`);
+}
+
     </script>
 </body>
 </html>
