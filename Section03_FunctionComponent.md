@@ -1,4 +1,4 @@
-# React Hooks란 무엇인가 ? 
+# 3-1. React Hooks란 무엇인가 ? 
 class 없이 state를 사용할 수 있는 새로운 기능이다. 
 
 ### 𖤐 React Hooks가 필요한 이유
@@ -198,4 +198,143 @@ function Apage() {
         </div>
     )
 }
+```
+
+# 3-2. State와 Props 
+|State|Props|
+|---|---|
+|부모 컴포넌트에서 자녀 컴포넌트로 데이터를 보내는게 아닌, 해당 컴포넌트 내부에서 데이터를 전달할 때|(Properties의 줄임말)상속하는 부모 컴포넌트로부터 자녀 컴포넌트에 데이터들을 전달하는 방법|
+|검색창에 글을 입력할 때 글이 변하는 것 구현 시 ||
+|mutable|immutable(읽기전용, 자녀 컴포넌트에서는 바뀌지 않음)|
+|state가 변하면 re-render됨||
+
+```js
+// State 
+A컴포넌트 
+state = {a : "a"}
+
+this.state.a // useage
+```
+
+```js
+// Props 
+A부모컴포넌트 
+state = {a : "a"}
+
+<B컴포넌트 aProps={this.state.a} />    // 넘겨주기 
+this.props.aProps   // usage 
+
+```
+
+# 3-3. 구조 분해 할당(Destructuring)
+배열이나 객체의 속성을 해체하여 그 값을 개별 변수에 담을 수 있게 하는 js 표현식이다.   
+&rarr; clean code를 위함이다.      
+
+```js
+function buildAnimal(animalData) {
+    let accessory = animalData.accessory,
+        animal = animalData.animal,
+        color = animalData.color,
+        hairType = animalData.hairType;
+}
+```
+
+```js
+function buildAnimal(animalData) {
+    let {accessory, animal, color, hairType} = animalData;
+}
+```
+
+### 깊게 들어간 객체 구조 분해 할당 
+```js
+let person = {
+    name: 'Soy',
+    age: 28,
+    phone: 02,
+    address: {
+        zipcode: 1234,
+        street: 'sunny',
+        number: 42
+    }
+}
+
+let {address : {zipcode, street, number}} = person;
+console.log(zipcode, street, number);   // 1234, sunny, 42
+```
+
+### 배열 구조 분해 할당 
+```js 
+let a, b, rest;
+[a, b] = [10, 20];
+
+console.log(a); // 10  
+console.log(b); // 20
+
+// 구조분해할당 
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(rest);
+```
+
+```js
+const week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
+const day1 = week[0];
+const day2 = week[1];
+const day3 = week[2];
+const day4 = week[3];
+const day5 = week[4];
+
+// 구조분해할당 
+const week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+const [day1, day2, day3, day4, day5] = week;
+```
+
+```js
+const numbers = [1, 2, 3, 4, 5, 6];
+const [,,three,,five] = numbers;    // 1, 2, 4 생략하여 할당
+                                    // three = 3, five = 5 로 할당됨
+```
+
+### 객체 구조분해 할당 
+```js
+const studentDetails = {
+    firstname: 'John',
+    lastName: 'Mary'
+}
+
+// firstName에 값이 없다면 not given이 출력된다.
+const {firstName: fName = 'not given', lastName} = studentDetails;
+
+// firstName이라고 안하고 fname이라고 해도 값이 정상적으로 불러와짐
+console.log(fname);
+console.log(lastName);
+```
+
+```js
+var people = [
+    {
+        name: "Mike Smith",
+        family: {
+            mother: "Jane Smith",
+            father: "Harry Smith",
+            sister: "Anne Smith"
+        },
+        age: 35
+    },
+    {
+        name: "Tom Riddle",
+        family: {
+            mother: "Norah Riddle",
+            father: "Richard Riddle",
+            brother: "Howard Riddle"
+        },
+        age: 24
+    }
+];
+
+for (var {name: n, family: {father: f}} of people) {
+    console.log(`Name: ${n}, Father: ${f}`);
+}
+// Name: Mike Smith, Father: Harry Smith
+// Name: Tom Riddle, Father: Richard Riddle
 ```
