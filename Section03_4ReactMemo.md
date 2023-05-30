@@ -1,6 +1,6 @@
 # React.memo를 이용한 컴포넌트 랜더링 최적화
 
-#### exercise: 현재 Todo 앱 최적화하기
+### exercise: 현재 Todo 앱 최적화하기
 
 현재 Todo 앱을 App, Lists, List, Form 으로 나눈 이유는 재사용성 뿐 만 아니라 각 컴포넌트의 랜더링 최적화를 위함이기도 하다.
 
@@ -24,7 +24,7 @@ const List = React.memo(({ todoData, setTodoDate }) => {
 
 ---
 
-#### 𖤐 React.memo( ) 란 ?
+### 𖤐 React.memo( ) 란 ?
 
 React가 제공하는 고차 컴포넌트(Higher Order Component)로, 랜더링 결과를 메모이징(Memoizing)하여 불필요한 리랜더링(props가 변경되지 않았을 경우)을 하지 않는다.
 
