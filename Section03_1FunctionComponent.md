@@ -367,3 +367,23 @@ array = ["4", "5", "6"];
 그러나 배열의 경우에는 다르다.  
 요소를 추가하거나 객체 속성 값을 변경할 때, Call Stack의 참조 ID는 동일하게 유지되고 Heap 메모리에서만 변경된다.  
 이렇게 불변성이 유지되지 않기 때문에 리액트에서 불변성을 위해 신경써주어야 한다.
+
+<b> 𖤐 불변성을 지키는 방법은 ? </b>  
+참조 타입에서는 값을 바꿨을 때 Call Stack 주소 값은 같은데 Heap 메모리 값만 변경한다. 따라서 불변성을 유지하기 위해서는 아예 새로운 배열을 반환하는 메소드를 사용한다.  
+&rarr; spread operator, map, filter, slice, reduce  
+&rarr; 원본 데이터를 변경하는 메소드 : splice, push
+
+```js
+const array = [1, 2, 3, 4];
+const sameArray = array;
+// 이때 push 메서드는 원본 배열(array)을 변경한다.
+sameArray.push(5);
+
+console.log(array === sameArray); // true
+```
+
+```js
+const array = [1, 2, 3, 4];
+const diffArray = [...array, 5];
+console.log(array === diffArray); // false
+```
