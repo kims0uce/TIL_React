@@ -8,6 +8,7 @@ import Lists from "./components/Lists";
 import Form from "./components/Form";
 
 export default function App() {
+  console.log("App is rendering...");
   // const [ 변수이름, state를 정하는 함수]
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");

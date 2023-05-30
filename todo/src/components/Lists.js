@@ -5,7 +5,8 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 import List from "./List";
 
-export default function Lists({ todoData, setTodoData }) {
+const Lists = React.memo(({ todoData, setTodoData }) => {
+  console.log("Lists is rendering...");
   const handleEnd = (result) => {
     // 목적지가 없으면 그대로 리턴한다.
     if (!result.destination) return;
@@ -57,4 +58,6 @@ export default function Lists({ todoData, setTodoData }) {
       </DragDropContext>
     </div>
   );
-}
+});
+
+export default Lists;
