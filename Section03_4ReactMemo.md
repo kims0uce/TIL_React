@@ -31,3 +31,28 @@ React가 제공하는 고차 컴포넌트(Higher Order Component)로, 랜더링 
 React는 먼저 컴포넌트를 랜더링한 뒤, 이전 랜더된 결과와 비교하여 DOM 업데이트를 결정한다. 만약 렌더 결과가 이전과 다르면 React는 DOM을 업데이트 한다.
 
 이 메서드는 오직 성능 최적화를 위하여 사용된다, 랜더링을 "방지"하기 위해 사용 시, side-effect를 발생시킬 수 있다.
+
+### 𖤐 Memoization 이란 ?
+
+메모이제이션은 비용이 많이 드는 함수 호출의 결과를 저장하고, 동일한 입력이 다시 발생할 때 캐시된 결과를 반환하여 컴퓨터 프로그램의 속도를 높이는데 주로 사용되는 최적화 기술이다.
+
+```javascript
+function Component({ a, b }) {
+  const result = compute(a, b);
+  return <div>{result}</div>;
+}
+```
+
+만약 Component 내의 compute 함수가 복잡한 연산을 수행하면, 결과 값을 리턴하는데 오랜 시간이 걸리게 된다. 이때 컴포넌트가 계속 리랜더링 된다면 연산을 계속 수행하는데 오랜 시간이 소요되고, 성능에 안좋은 영향을 미칠 뿐 아니라 UI지연 현상도 발생게 된다.
+
+이러한 현상을 해결해주기 위해 사용하는 것이 useMemo이다.  
+compute 함수에 넘겨주는 a, b의 값이 이전과 동일하다면 컴포넌트가 리랜더링 되더라도 연산을 다시 하지 않고, 이전 랜더링 때 저장해두었던 값을 재활용한다.
+
+<b> 사용방법 </b>
+
+```javascript
+function Component({a, b} {
+  const result = useMemo(() => compute(a, b), [a ,b]);
+  return <div>{result}</div>
+})
+```
