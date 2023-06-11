@@ -1,14 +1,17 @@
 import React from "react";
 
 const List = React.memo(
-  ({ id, title, completed, todoData, setTodoData, provided, snapshot }) => {
+  ({
+    id,
+    title,
+    completed,
+    todoData,
+    setTodoData,
+    provided,
+    snapshot,
+    handleClick,
+  }) => {
     console.log("List is rendering...");
-    // this.filter() 메소드를 사용하여 할일 목록을 지운다.
-    const handleClick = (id) => {
-      let newTodoData = todoData.filter((data) => data.id !== id);
-      console.log("newTodoData", newTodoData);
-      setTodoData(newTodoData);
-    };
 
     // 완료한 할 일 가로선 긋기
     const handelCompleteChange = (id) => {

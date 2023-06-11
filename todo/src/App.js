@@ -1,6 +1,6 @@
 // react 라이브러리에서 -> 어떠한 기능을 작성하는데 도움
 // React 와 Component 클래스를 가져온다.
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 // App.css 적용
 import "./App.css";
 // List라는 자녀 컴포넌트를 만듦
@@ -12,6 +12,16 @@ export default function App() {
   // const [ 변수이름, state를 정하는 함수]
   const [todoData, setTodoData] = useState([]);
   const [value, setValue] = useState("");
+
+  // this.filter() 메소드를 사용하여 할일 목록을 지운다.
+  const handleClick = useCallback(
+    (id) => {
+      let newTodoData = todoData.filter((data) => data.id !== id);
+      console.log("newTodoData", newTodoData);
+      setTodoData(newTodoData);
+    },
+    [todoData]
+  );
 
   // handleSubmit은 todoData와 value 모두 다루고 있기 때문에
   // App.js 컴포넌트 안에서 처리하는 것이 좋다.
@@ -56,7 +66,11 @@ export default function App() {
         <div className="flex justify-between mb-3">
           <h1>할 일 목록</h1>
         </div>
-        <Lists todoData={todoData} setTodoData={setTodoData} />
+        <Lists
+          handleClick={handleClick}
+          todoData={todoData}
+          setTodoData={setTodoData}
+        />
         <Form handleSubmit={handleSubmit} value={value} setValue={setValue} />
       </div>
     </div>

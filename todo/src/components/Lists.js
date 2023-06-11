@@ -5,7 +5,7 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 import List from "./List";
 
-const Lists = React.memo(({ todoData, setTodoData }) => {
+const Lists = React.memo(({ handleClick, todoData, setTodoData }) => {
   console.log("Lists is rendering...");
   const handleEnd = (result) => {
     // 목적지가 없으면 그대로 리턴한다.
@@ -47,6 +47,7 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
                       setTodoData={setTodoData}
                       provided={provided}
                       snapshot={snapshot}
+                      handleClick={handleClick}
                     />
                   )}
                 </Draggable>
