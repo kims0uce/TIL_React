@@ -56,3 +56,5 @@ function Component({a, b} {
   return <div>{result}</div>
 })
 ```
+
+_Chrome 확장 툴 중 `React Developer Tools` 를 통해 어떤 컴포넌트가 리랜더링 되는지 확인할 수 있다._
