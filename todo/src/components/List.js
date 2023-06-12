@@ -28,6 +28,7 @@ const List = React.memo(
 
       // this.setState({todoData: newTodoData});
       setTodoData(newTodoData);
+      localStorage.setItem("todoData", JSON.stringify(newTodoData));
     };
 
     // 할일 목록 단건 수정
@@ -46,6 +47,7 @@ const List = React.memo(
         return data;
       });
       setTodoData(newTodoData);
+      localStorage.setItem("todoData", JSON.stringify(newTodoData));
       setIsEditing(false);
     };
 

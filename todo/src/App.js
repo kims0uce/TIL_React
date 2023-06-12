@@ -7,10 +7,14 @@ import "./App.css";
 import Lists from "./components/Lists";
 import Form from "./components/Form";
 
+const initialTodoData = localStorage.getItem("todoData")
+  ? JSON.parse(localStorage.getItem("todoData"))
+  : [];
+
 export default function App() {
   console.log("App is rendering...");
   // const [ 변수이름, state를 정하는 함수]
-  const [todoData, setTodoData] = useState([]);
+  const [todoData, setTodoData] = useState(initialTodoData);
   const [value, setValue] = useState("");
 
   // 할일 목록 단건 삭제
@@ -20,6 +24,8 @@ export default function App() {
       let newTodoData = todoData.filter((data) => data.id !== id);
       console.log("newTodoData", newTodoData);
       setTodoData(newTodoData);
+      // 객체나 배열을 저장해줄 때는 JSON stringify를 이용하여 텍스트로 변환해준 후 저장한다.
+      localStorage.setItem("todoData", JSON.stringify(newTodoData));
     },
     [todoData]
   );
@@ -27,6 +33,7 @@ export default function App() {
   // 할일 목록 전체 삭제
   const handleRemoveClick = () => {
     setTodoData([]);
+    localStorage.setItem("todoData", JSON.stringify([]));
   };
 
   // handleSubmit은 todoData와 value 모두 다루고 있기 때문에
@@ -49,6 +56,7 @@ export default function App() {
 
     // setter에서 이전 state를 가지고 오기 위해서는 인수에 함수를 사용할 수 있다.
     setTodoData((prev) => [...prev, newTodo]);
+    localStorage.setItem("todoData", JSON.stringify([...todoData, newTodo]));
     setValue("");
   };
 
