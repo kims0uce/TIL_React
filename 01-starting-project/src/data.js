@@ -10,12 +10,12 @@ export const CORE_CONCEPTS = [
     description:
       "The core UI building block - compose the user interface by combining multiple components.",
   },
-  {
-    image: jsxImg,
-    title: "JSX",
-    description:
-      "Return (potentially dynamic) HTML(ish) code to define the actual markup that will be rendered.",
-  },
+  // {
+  //   image: jsxImg,
+  //   title: "JSX",
+  //   description:
+  //     "Return (potentially dynamic) HTML(ish) code to define the actual markup that will be rendered.",
+  // },
   {
     image: propsImg,
     title: "Props",
