@@ -1,5 +1,5 @@
-# React 공부 기록
+### React 공부 기록
 
-## Todo app
+<b> Todo App </b>
 
-## netflix clone app
+<b> Starting Project </b>
