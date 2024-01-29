@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Player({ initialName, symbol }) {
+export default function Player({ initialName, symbol, isActive }) {
   // 데이터를 조정하여 UI 수정 후 업데이트 되도록 하기위해 useState 활용한다.
   // 상태값을 생성함으로써 해당 값을 수정할 수 있는 함수를 가져온다.
   // 이 함수를 통해 리액트는 UI를 수정한다.
@@ -21,7 +21,7 @@ export default function Player({ initialName, symbol }) {
   };
 
   return (
-    <li>
+    <li className={isActive ? "active" : undefined}>
       <span className="player">
         {isEditing ? (
           <input type="text" value={playerName} onChange={handleChangeName} />
