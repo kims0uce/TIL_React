@@ -6,11 +6,30 @@ import Log from "./components/Log";
 import { WINNING_COMBINATIONS } from "./winning-combination";
 import GameOver from "./components/GameOver";
 
-const initialGameBoard = [
+const PLAYERS = {
+  X: "Player 1",
+  O: "Player 2",
+};
+
+const INITIAL_GAME_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
 ];
+
+function deriveGameBoard(gameTurns) {
+  // 파생상태
+  let gameBoard = [...INITIAL_GAME_BOARD.map((array) => [...array])];
+
+  // turns가 빈배열이면 어차피 for문 진입하지 못함
+  for (const turn of gameTurns) {
+    const { square, player } = turn;
+    const { row, col } = square;
+
+    gameBoard[row][col] = player;
+  }
+  return gameBoard;
+}
 
 function deriveActivePlayer(gameTurns) {
   let currentPlayer = "X";
@@ -21,29 +40,7 @@ function deriveActivePlayer(gameTurns) {
   return currentPlayer;
 }
 
-// 매차례마다 재실행되고 있다.
-function App() {
-  const [players, setPlayers] = useState({
-    X: "Player 1",
-    O: "Player 2",
-  });
-
-  // gameTurns 상태가 현재 플레이어 및 격자판 어디를 선택했는지에 대한 정보까지 모두 가지고 있다.
-  // 하나의 상태에 최대한 많은 정보를 담고 파생해 나가는 것이 좋다.
-  const [gameTurns, setGameTurns] = useState([]);
-
-  const activePlayer = deriveActivePlayer(gameTurns);
-  // 파생상태
-  let gameBoard = [...initialGameBoard.map((array) => [...array])];
-
-  // turns가 빈배열이면 어차피 for문 진입하지 못함
-  for (const turn of gameTurns) {
-    const { square, player } = turn;
-    const { row, col } = square;
-
-    gameBoard[row][col] = player;
-  }
-
+function deriveWinner(gameBoard, players) {
   let winner = undefined;
 
   for (const combi of WINNING_COMBINATIONS) {
@@ -59,7 +56,22 @@ function App() {
       winner = players[firstSymbol];
     }
   }
+  return winner;
+}
 
+// 매차례마다 재실행되고 있다.
+function App() {
+  const [players, setPlayers] = useState(PLAYERS);
+
+  // gameTurns 상태가 현재 플레이어 및 격자판 어디를 선택했는지에 대한 정보까지 모두 가지고 있다.
+  // 하나의 상태에 최대한 많은 정보를 담고 파생해 나가는 것이 좋다.
+  const [gameTurns, setGameTurns] = useState([]);
+
+  const activePlayer = deriveActivePlayer(gameTurns);
+
+  const gameBoard = deriveGameBoard(gameTurns);
+
+  const winner = deriveWinner(gameBoard, players);
   // 무승부일때
   const hasDraw = gameTurns.length === 9 && !winner;
 
@@ -99,13 +111,13 @@ function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName="Player 1"
+            initialName="PLAYERS.X"
             symbol="X"
             isActive={activePlayer === "X"}
             onChangeName={handleUpdatePlayer}
           />
           <Player
-            initialName="Player 2"
+            initialName="PLAYERS.O"
             symbol="O"
             isActive={activePlayer === "O"}
             onChangeName={handleUpdatePlayer}
