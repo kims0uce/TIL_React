@@ -5,3 +5,5 @@
 <b> Starting Project </b>
 
 <b> Tic-Tac-Toe </b>
+
+<b> Investment Calculator </b>
