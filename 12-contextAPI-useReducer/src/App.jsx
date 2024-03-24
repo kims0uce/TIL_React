@@ -67,16 +67,20 @@ function App() {
     });
   }
 
+  // 컨텍스트를 통해 함수도 노출시킬 수 있다.
+  const ctxValue = {
+    items: shoppingCart.items,
+    addItemToCart: handleAddItemToCart,
+    updateItemQuantity: handleUpdateCartItemQuantity,
+  };
+
   return (
-    <CartContext.Provider value={{ items: [] }}>
-      <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
-      />
+    <CartContext.Provider value={ctxValue}>
+      <Header />
       <Shop>
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
-            <Product {...product} onAddToCart={handleAddItemToCart} />
+            <Product {...product} />
           </li>
         ))}
       </Shop>
