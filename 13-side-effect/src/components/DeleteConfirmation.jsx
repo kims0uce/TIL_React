@@ -1,21 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import ProgressBar from "./ProgressBar";
 
 const TIMER = 3000;
 
 export default function DeleteConfirmation({ onConfirm, onCancel }) {
-  const [remainingTime, setRemainingTime] = useState(TIMER);
-
-  useEffect(() => {
-    // 매 ms마다 실행시키는 함수
-    const interval = setInterval(() => {
-      console.log("INTERVAL");
-      setRemainingTime((prevTime) => prevTime - 10);
-    }, 10);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   // useEffect를 통해 컴포넌트가 사라질때 setTimeout함수의 실행을 멈춘다.
   useEffect(() => {
     // 3초가 지나면 콜백함수가 실행된다.
@@ -45,7 +33,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
           Yes
         </button>
       </div>
-      <progress value={remainingTime} max={TIMER} />
+      <ProgressBar timer={TIMER} />
     </div>
   );
 }
