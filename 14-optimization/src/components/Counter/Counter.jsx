@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 
 import IconButton from "../UI/IconButton.jsx";
 import MinusIcon from "../UI/Icons/MinusIcon.jsx";
@@ -25,7 +25,13 @@ function isPrime(number) {
 
 const Counter = ({ initialCount }) => {
   log("<Counter /> rendered", 1);
-  const initialCountIsPrime = isPrime(initialCount);
+
+  // initialCountIsPrime함수는 initialCount값이 바뀌었을 때만 유의미하다.
+  // 따라서 Counter 컴포넌트가 재실행될때 마다 재생성될 필요가 없다.
+  const initialCountIsPrime = useMemo(
+    () => isPrime(initialCount),
+    [initialCount]
+  );
 
   const [counter, setCounter] = useState(initialCount);
 
