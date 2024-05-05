@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 
 import IconButton from "../UI/IconButton.jsx";
 import MinusIcon from "../UI/Icons/MinusIcon.jsx";
@@ -29,13 +29,17 @@ const Counter = ({ initialCount }) => {
 
   const [counter, setCounter] = useState(initialCount);
 
-  function handleDecrement() {
+  // IconButton 컴포넌트의 props로 내려주는 아래 두 함수는
+  // Counter 컴포넌트 안에 생성되어 있다.
+  // 즉, 중첩함수이다.
+  // 따라서 Counter 컴포넌트가 리랜더링 될 때 마다 다시 생성된다.
+  const handleDecrement = useCallback(function handleDecrement() {
     setCounter((prevCounter) => prevCounter - 1);
-  }
+  }, []);
 
-  function handleIncrement() {
+  const handleIncrement = useCallback(function handleIncrement() {
     setCounter((prevCounter) => prevCounter + 1);
-  }
+  }, []);
 
   return (
     <section className="counter">
