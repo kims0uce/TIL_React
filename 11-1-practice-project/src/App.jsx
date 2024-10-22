@@ -1,8 +1,21 @@
+import { useState } from "react";
+
+import SidebarArea from "./components/SidebarArea";
+import MainContentArea from "./components/MainContentArea";
+import NoContentSelected from "./components/NoContentSelected";
+
 function App() {
+  const [projectState, setProjectState] = useState({
+    selectedProject: undefined,
+    projects: [],
+  });
+
   return (
-    <>
-      <h1 className="my-8 text-center text-5xl font-bold">Hello World</h1>
-    </>
+    <main className="h-screen my-8 flex gap-8">
+      <SidebarArea />
+      <MainContentArea />
+      <NoContentSelected />
+    </main>
   );
 }
 
